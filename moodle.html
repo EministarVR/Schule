@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodle | Schulzentrum</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="logo.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #141414;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #e0e0e0;
+            text-align: center;
+        }
+
+        .navbar {
+            background-color: #1f1f1f;
+            padding: 15px 0;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin: 0 20px;
+        }
+
+        .nav-links a {
+            color: #61dafb; /* Linkfarbe */
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b; /* Rote Farbe beim Hover */
+        }
+
+        a {
+            color: #61dafb; /* Setze hier die gewünschte Farbe */
+            text-decoration: none; /* Optional: entfernt die Unterstreichung */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Optional: Unterstreichung beim Hover */
+        }
+
+        .container {
+            background-color: #1f1f1f;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            padding: 50px;
+            width: 80%;
+            max-width: 700px;
+            margin-top: 100px; /* Platz für die Navigationsleiste */
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-box {
+            background-color: #282828;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 20px rgba(0, 123, 255, 0.9);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
+            }
+        }
+
+        .logo-box img {
+            max-width: 120px;
+            border-radius: 50%;
+        }
+
+        .sad-emoji {
+            font-size: 100px;
+            color: #ff6b6b;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 600;
+            color: #61dafb;
+            margin: 20px 0;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .message {
+            font-size: 20px;
+            font-weight: 400;
+            color: #d0d0d0;
+            margin: 20px 0;
+            line-height: 1.6;
+            animation: fadeIn 1.4s ease-in-out;
+        }
+
+        .message span {
+            color: #61dafb;
+        }
+
+        .additional-info {
+            font-size: 18px;
+            font-weight: 300;
+            color: #b0b0b0;
+            margin-top: 30px;
+            line-height: 1.5;
+            animation: fadeIn 1.6s ease-in-out;
+        }
+
+        .footer {
+            font-size: 14px;
+            color: #888;
+            margin-top: 40px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .footer a {
+            color: #61dafb;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design für Mobilgeräte */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            .navbar {
+                padding: 10px 0;
+            }
+
+            .nav-links li {
+                margin: 0 10px;
+            }
+
+            .nav-links a {
+                font-size: 16px;
+            }
+
+            .container {
+                width: 100%;
+                padding: 30px;
+                margin-top: 120px;
+            }
+
+            .logo-box img {
+                max-width: 100px;
+            }
+
+            .sad-emoji {
+                font-size: 80px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .message {
+                font-size: 18px;
+            }
+
+            .additional-info {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="suche.html">Suche</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="logo-box">
+            <img src="Schulzentrum__1_-removebg-preview (1).png" alt="Schullogo">
+        </div>
+        <div class="sad-emoji">🙁</div>
+        <h1>Moodle Status</h1>
+        <p class="message">
+            Leider wurde unser Moodle-Server <span>dauerhaft</span> von den Anbietern heruntergefahren. Dies bedeutet, dass unsere Schule keinen Zugriff mehr auf die gewohnte Lernplattform hat.
+        </p>
+        <p class="additional-info">
+            Wir bedauern diesen Schritt sehr und wissen, dass viele von euch Moodle für den Unterricht und die Kommunikation genutzt haben. Die Schule arbeitet bereits daran, eine neue Lösung zu finden, die hoffentlich allen Schülern und Lehrkräften eine geeignete alternative Lernplattform bietet. <br><br>
+            Falls ihr Fragen habt, könnt ihr euch gerne an das <a href="#">Schulsekretariat</a> wenden. Wir danken euch für euer Verständnis!
+        </p>
+        <div class="footer">
+            © 2024 Schulzentrum Oberes Elztal, Alle Rechte vorbehalten. | <a href="impressum.html">Impressum</a>
+        </div>
+    </div>
+</body>
+</html>

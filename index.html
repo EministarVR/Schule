@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Schulhomepage - Schulzentrum Oberes Elztal">
+    <title>Schulzentrum Oberes Elztal</title>
+    <link rel="icon" href="logo.ico" type="image/x-icon">
+    <style>
+        /* Global Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #121212; /* Dunkler Hintergrund */
+            color: #e0e0e0; /* Helle Schrift */
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e1e1e, #383838);
+            padding: 20px 20px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Abstand zwischen Logo und Buttons */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header a.logo {
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        header a.logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leichte Schatten beim Hover */
+        }
+
+        header img {
+            height: 60px;
+            cursor: pointer;
+        }
+
+        .header-text {
+            font-size: 24px;
+            color: #e0e0e0; /* Helle Farbe für den Header-Text */
+            margin-left: 20px; /* Abstand zum Logo */
+            font-weight: bold;
+        }
+
+        .button-container-header {
+            display: flex;
+            justify-content: flex-end; /* Buttons nach rechts ausrichten */
+            align-items: center;
+        }
+
+        /* Button Styles */
+        .link-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #383838; /* Dunkler Hintergrund */
+            border: 1px solid #007aff; /* Leichter Rand in Akzentfarbe */
+            border-radius: 30px;
+            margin-left: 10px; /* Abstand zwischen Buttons */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leichte Schatten für Button */
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            vertical-align: middle; /* Zentrierung der Buttons */
+        }
+
+        .link-button img {
+            width: 40px; /* Größe der Logos */
+            height: auto; /* Höhe automatisch anpassen */
+            display: block;
+        }
+
+        .link-button:hover {
+            background: #007aff; /* Akzentfarbe bei Hover */
+            color: #ffffff;
+            transform: translateY(-5px); /* Schwebe-Effekt beim Hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Verstärkter Schatten */
+        }
+
+        /* Container Styles */
+        .container {
+            background-color: #1f1f1f; /* Dunkler Hintergrund für Container */
+            max-width: 800px;
+            padding: 40px;
+            margin: 100px auto; /* Abstand nach oben durch das Header-Element */
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Leichte Schatten für Container */
+            text-align: center;
+        }
+
+        h1 {
+            color: #007aff; /* Akzentfarbe für Überschrift */
+            font-size: 2.5em;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #ddd; /* Helle Grautöne für Text */
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Styles für mobile Geräte */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column; /* Header-Elemente untereinander anordnen */
+                text-align: center;
+            }
+
+            .header-text {
+                font-size: 20px;
+                margin: 10px 0; /* Abstand nach oben und unten */
+            }
+
+            .button-container-header {
+                justify-content: center; /* Buttons zentrieren */
+                flex-wrap: wrap; /* Buttons umbrechen, wenn nötig */
+                margin-top: 10px; /* Abstand nach oben */
+            }
+
+            .link-button {
+                margin: 5px; /* Weniger Abstand zwischen den Buttons */
+                padding: 10px 15px; /* Kleinere Buttons */
+                border-radius: 20px; /* Kleinere Eckenradius */
+            }
+
+            .link-button img {
+                width: 30px; /* Kleinere Logos */
+            }
+
+            /* Container für den Hauptinhalt */
+            .container {
+                padding: 20px; /* Weniger Padding für Container */
+                margin: 50px 20px; /* Weniger Abstand nach oben und von den Seiten */
+            }
+
+            h1 {
+                font-size: 2em; /* Kleinere Schriftgröße für Überschrift */
+            }
+
+            p {
+                font-size: 1em; /* Kleinere Schriftgröße für Text */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header-Bereich mit Logo, Text und Buttons -->
+    <header>
+        <!-- Logo-Link -->
+        <a href="index.html" class="logo">
+            <img src="Schulzentrum__1_-removebg-preview (1).png" alt="Logo der Schule">
+        </a>
+        
+        <!-- Text im Header -->
+        <span class="header-text">Herzlich willkommen</span>
+
+        <!-- Container für die Buttons -->
+        <div class="button-container-header">
+            <!-- Button für Moodle -->
+            <a href="moodle.html" class="link-button">
+                <img src="moodle-logo.png" alt="Moodle Logo">
+            </a>
+            <!-- Button für SDUI -->
+            <a href="https://sdui.app/schulzentrum-oberes-eztal-elzach/login" class="link-button">
+                <img src="sdui-logo.png" alt="SDUI Logo">
+            </a>
+        </div>
+    </header>
+
+    <!-- Hauptinhalt der Seite -->
+    <div class="container">
+        <h1>Herzlich willkommen auf unserer Schulhomepage!</h1>
+        <p>
+            Schön, dass Sie den Weg auf unsere Webseite gefunden haben! 
+            Wir sind stolz, als Verbundschule die Grund-, Haupt-, Werkreal- und Realschule gemeinsam unter einem Dach zu vereinen. 
+            Das bedeutet für uns: Eine gemeinsame Schulleitung, eine gemeinsame Verwaltung und eine harmonische Gemeinschaft.
+        </p>
+        <p>
+            Jedes Jahr begleiten unsere engagierten Lehrkräfte unsere Schülerinnen und Schüler zu hervorragenden Abschlüssen. 
+            Mit modernen Lernkonzepten und einer exzellenten Betreuung bieten wir nahezu alle Bildungsabschlüsse an. Unsere Top-Bewertungen durch Fremdevaluationen 
+            zeigen, dass wir in allen Schularten eine hohe Qualität garantieren.
+        </p>
+        <p>
+            Neugierig geworden und möchten Sie mehr über uns erfahren? 
+            Dann schauen Sie doch gerne in unsere Schulfilme rein!
+        </p>
+    </div>
+</body>
+</html>
