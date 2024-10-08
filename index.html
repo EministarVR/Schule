@@ -6,16 +6,25 @@
     <meta name="description" content="Schulhomepage - Schulzentrum Oberes Elztal">
     <title>Schulzentrum Oberes Elztal</title>
     <link rel="icon" href="logo.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
-        /* Global Styles */
+        /* Globale Stile */
         body, html {
             margin: 0;
             padding: 0;
-            font-family: 'Helvetica Neue', sans-serif;
-            background-color: #121212; /* Default: Dunkler Hintergrund */
-            color: #e0e0e0; /* Helle Schrift */
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212; /* Dunkler Hintergrund */
+            color: #e0e0e0;
             scroll-behavior: smooth;
-            transition: background-color 0.5s ease, color 0.5s ease; /* Übergangseffekte */
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body.light-mode {
+            background-color: #ffffff; /* Heller Hintergrund */
+            color: #333333;
         }
 
         /* Header */
@@ -23,278 +32,326 @@
             background: linear-gradient(135deg, #1e1e1e, #383838);
             padding: 20px 20px;
             color: white;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Abstand zwischen Logo und Buttons */
+            justify-content: space-between;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: background 0.5s ease;
         }
 
-        header a.logo img {
+        header.light-mode {
+            background: linear-gradient(135deg, #f0f0f0, #ffffff);
+            color: #333333;
+        }
+
+        header img {
             height: 60px;
+            transition: transform 0.5s ease;
         }
 
-        .header-text {
-            font-size: 24px;
-            margin-left: 20px;
-            font-weight: bold;
-        }
-
-        .button-container-header {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
-        .link-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #383838;
-            border: 1px solid #007aff;
-            border-radius: 30px;
-            margin-left: 10px;
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .link-button img {
-            width: 40px;
-        }
-
-        /* Container Styles */
+        /* Container */
         .container {
             background-color: #1f1f1f;
             max-width: 800px;
             padding: 40px;
             margin: 100px auto;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             text-align: center;
+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.3s ease;
         }
 
-        h1 {
-            color: #007aff;
+        body.light-mode .container {
+            background-color: #ffffff;
+            color: #333333;
         }
 
-        /* Dark & Light Mode Switch Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #1f1f1f;
-            border: 1px solid #007aff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            width: 300px;
-            z-index: 2000;
-            text-align: center;
-            animation: slide-down 0.5s ease forwards;
+        /* Hover-Effekt für die Box */
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .modal p {
-            margin-bottom: 20px;
-        }
-
-        .modal-buttons {
+        /* Buttons für Moodle und SDUI */
+        .header-buttons {
             display: flex;
-            justify-content: center;
-            gap: 10px;
+            gap: 15px;
         }
 
-        .modal-button {
-            background-color: #007aff;
-            border: none;
+        .header-button {
             padding: 10px 15px;
-            color: #ffffff;
-            border-radius: 8px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            font-weight: 600;
         }
 
-        .modal-button:hover {
-            background-color: #005bb5;
+        .header-button:hover {
+            background-color: #1976D2; /* Dunkleres Blau beim Hover */
         }
 
-        @keyframes slide-down {
-            from {
-                opacity: 0;
-                transform: translate(-50%, -30%);
-            }
-            to {
-                opacity: 1;
-                transform: translate(-50%, -50%);
-            }
+        /* Switch-Box für Light/Dark Mode */
+        .switch-box {
+            margin: 50px auto;
+            background-color: #292929;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+            transition: background-color 0.5s ease, box-shadow 0.5s ease, transform 0.3s ease;
         }
 
-        /* Switch Styles */
-        .switch-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 10px 0;
+        body.light-mode .switch-box {
+            background-color: #e0e0e0;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .switch-label {
-            font-size: 16px;
+        /* Hover-Effekt für die Switch-Box */
+        .switch-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
+        /* Switch-Button */
         .switch {
             position: relative;
             display: inline-block;
-            width: 50px;
-            height: 24px;
+            width: 100px; /* Breiterer Switch für die Animation */
+            height: 50px;
+            background-color: #ccc;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.5s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
+            display: none;
         }
 
+        /* Animationen für Sonne und Mond */
         .slider {
             position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 24px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
+            top: 5px;
+            left: 5px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
+            transition: left 0.5s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        input:checked + .slider {
-            background-color: #007aff;
+        .switch input:checked + .slider {
+            left: 55px; /* Schiebe den Switch nach rechts */
         }
 
-        input:checked + .slider:before {
-            transform: translateX(26px);
+        /* Sonne mit leuchtendem Ring */
+        .sun {
+            position: absolute;
+            top: 0;
+            left: 5px;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle at center, #ffdf00, #ff9d00);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 223, 0, 0.5);
+            transition: transform 0.5s, opacity 0.5s; 
+            opacity: 0; /* Sonne standardmäßig unsichtbar */
+        }
+
+        .switch input:checked + .slider .sun {
+            opacity: 1; /* Sonne sichtbar im Light Mode */
+        }
+
+        .sun-ring {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 223, 0, 0.5);
+            box-shadow: 0 0 20px rgba(255, 223, 0, 0.7);
+            transition: opacity 0.5s;
+            opacity: 0; /* Ring standardmäßig unsichtbar */
+        }
+
+        .switch input:checked + .slider .sun-ring {
+            opacity: 1; /* Ring sichtbar im Light Mode */
+        }
+
+        /* Mond */
+        .moon {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 25px;
+            height: 25px;
+            background: radial-gradient(circle at 15px 15px, #ffffff, #ccc);
+            border-radius: 50%;
+            transition: transform 0.5s, opacity 0.5s; 
+            opacity: 0; /* Mond standardmäßig unsichtbar */
+        }
+
+        .switch input:checked + .slider .moon {
+            opacity: 1; /* Mond sichtbar im Dark Mode */
+        }
+
+        /* Mond mit Flecken */
+        .moon:before, .moon:after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .moon:before {
+            width: 6px;
+            height: 6px;
+            top: 4px;
+            left: 5px;
+        }
+
+        .moon:after {
+            width: 4px;
+            height: 4px;
+            top: 10px;
+            left: 12px;
+        }
+
+        /* Überschriften */
+        h1, h2 {
+            color: #2196F3; /* Blau für Überschriften */
+        }
+
+        /* Tooltip-Stil */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 140px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            border-radius: 6px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -70px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+
+        
+        .footer {
+            font-size: 14px;
+            color: #888;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #61dafb;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Anpassungen */
+        @media (max-width: 600px) {
+            .switch-box {
+                width: 80%; /* Breitere Box auf kleineren Bildschirmen */
+            }
         }
     </style>
 </head>
-<body>
-    <!-- Header-Bereich mit Logo, Text und Buttons -->
+<body class="dark-mode">
+
     <header>
-        <a href="index.html" class="logo">
-            <img src="Brand.png" alt="Logo der Schule">
-        </a>
-        <span class="header-text">Herzlich willkommen</span>
-        <div class="button-container-header">
-            <a href="moodle.html" class="link-button">
-                <img src="moodle-logo.png" alt="Moodle Logo">
-            </a>
-            <a href="https://sdui.app/schulzentrum-oberes-eztal-elzach/login" class="link-button">
-                <img src="sdui-logo.png" alt="SDUI Logo">
-            </a>
+        <img src="Schulzentrum__1_-removebg-preview (1).png" alt="Logo">
+        <div class="header-buttons">
+            <a href="index.html" alt="Logo"></a>
+            <a href="kontakt.html" class="header-button">Kontakt</a>
+            <a href="moodle.html" class="header-button">Moodle</a>
+            <a href="https://sdui.app/schulzentrum-oberes-eztal-elzach/login" class="header-button" target="_blank">SDUI</a>
         </div>
     </header>
 
-    <!-- Hauptinhalt der Seite -->
     <div class="container">
-        <h1>Herzlich willkommen auf unserer Schulhomepage!</h1>
-        <p>Schön, dass Sie den Weg auf unsere Webseite gefunden haben!</p>
-        <p>Wir sind stolz, als Verbundschule die Grund-, Haupt-, Werkreal- und Realschule gemeinsam unter einem Dach zu vereinen.</p>
+        <h1>Willkommen am Schulzentrum Oberes Elztal!</h1>
+        <p>Wir freuen uns, dass Sie den Weg zu uns gefunden haben.
+
+            Wir sind eine einzigartige Verbundschule, die Grundschule, Hauptschule, Werkrealschule und Realschule unter einem Dach vereint. Gemeinsam bedeutet für uns nicht nur eine gemeinsame Schulleitung und Verwaltung, sondern auch ein harmonisches Miteinander in modernen Räumlichkeiten.
+            
+         <p>   Jedes Jahr erreichen unsere Schülerinnen und Schüler dank der Unterstützung unserer kompetenten und engagierten Lehrkräfte sowie innovativer Lernkonzepte herausragende Abschlüsse. Bei uns stehen Chancen für alle im Mittelpunkt, denn wir bieten nahezu alle Bildungsabschlüsse an. Die hohen Bewertungen in externen Evaluierungen bestätigen die exzellente Qualität unserer Schulen im Schulzentrum.
+            
+            Neugierig geworden?
+            
+          </p>  Entdecken Sie mehr über unser Schulzentrum und lassen Sie sich von unseren Schulfilmen inspirieren. Klicken Sie hier, um mehr zu erfahren und einen Einblick in unser vielfältiges Schulleben zu gewinnen!</p>
     </div>
 
-    <!-- Modal für Dark- und Light-Mode -->
-    <div class="modal" id="themeModal">
-        <p>Hey, du verwendest derzeit den Dark Mode automatisch. Möchtest du fortfahren?</p>
-        <div class="modal-buttons">
-            <button class="modal-button" id="continueDarkMode">Ja</button>
-            <button class="modal-button" id="switchMode">Nein</button>
+    <!-- Switch-Box für den Moduswechsel -->
+    <div class="switch-box">
+        <label class="switch">
+            <input type="checkbox" id="modeSwitch">
+            <div class="slider">
+                <div class="sun-ring"></div>
+                <div class="sun"></div>
+                <div class="moon"></div>
+            </div>
+        </label>
+        <div class="tooltip">
+            <span>Tippen Sie hier, um den Modus zu wechseln!</span>
+            <span class="tooltip-text">Wechseln Sie zwischen Licht- und Dunkelmodus.</span>
         </div>
-        <div class="switch-container">
-            <span class="switch-label">Automatisch</span>
-            <label class="switch">
-                <input type="checkbox" id="autoSwitch">
-                <span class="slider"></span>
-            </label>
-        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Schulzentrum Oberes Elztal. Alle Rechte vorbehalten.</p>
+        <p><a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeModal = document.getElementById('themeModal');
-            const autoSwitch = document.getElementById('autoSwitch');
-            const continueDarkMode = document.getElementById('continueDarkMode');
-            const switchMode = document.getElementById('switchMode');
-
-            // Modal anzeigen
-            setTimeout(() => {
-                themeModal.style.display = 'block';
-            }, 1000);
-
-            // Event Listener für "Ja" Button
-            continueDarkMode.addEventListener('click', () => {
-                themeModal.style.display = 'none';
-            });
-
-            // Event Listener für "Nein" Button
-            switchMode.addEventListener('click', () => {
-                document.body.classList.toggle('light-mode');
-                themeModal.style.display = 'none';
-            });
-
-            // Umschalter für Automatik-Modus
-            autoSwitch.addEventListener('change', () => {
-                if (autoSwitch.checked) {
-                    document.body.classList.add('auto-mode');
-                } else {
-                    document.body.classList.remove('auto-mode');
-                }
-            });
-
-            // Light-Mode CSS
-            const lightModeStyles = `
-                body.light-mode {
-                    background-color: #f5f5f5;
-                    color: #121212;
-                }
-
-                header.light-mode {
-                    background: linear-gradient(135deg, #ffffff, #f0f0f0);
-                    color: #121212;
-                }
-
-                .link-button.light-mode {
-                    background: #f0f0f0;
-                    border: 1px solid #121212;
-                    color: #121212;
-                }
-
-                .container.light-mode {
-                    background-color: #ffffff;
-                    color: #121212;
-                }
-
-                .modal.light-mode {
-                    background-color: #f9f9f9;
-                    color: #121212;
-                }
-            `;
-            const styleSheet = document.createElement("style");
-            styleSheet.type = "text/css";
-            styleSheet.innerText = lightModeStyles;
-            document.head.appendChild(styleSheet);
+        const modeSwitch = document.getElementById('modeSwitch');
+    
+        // Überprüfen, ob der Light Mode im localStorage gespeichert ist
+        if (localStorage.getItem('lightMode') === 'enabled') {
+            document.body.classList.add('light-mode');
+            modeSwitch.checked = true; // Schalter aktivieren
+        }
+    
+        modeSwitch.addEventListener('change', () => {
+            if (modeSwitch.checked) {
+                document.body.classList.add('light-mode');
+                localStorage.setItem('lightMode', 'enabled');
+            } else {
+                document.body.classList.remove('light-mode');
+                localStorage.setItem('lightMode', 'disabled');
+            }
         });
     </script>
+    
+
 </body>
 </html>

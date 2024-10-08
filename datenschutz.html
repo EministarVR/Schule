@@ -7,13 +7,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="icon" href="logo.ico" type="image/x-icon">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #141414;
+        /* Globale Stile */
+        body, html {
             margin: 0;
             padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #141414; /* Dunkler Hintergrund */
             color: #e0e0e0;
-            text-align: center;
+            scroll-behavior: smooth;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body.light-mode {
+            background-color: #ffffff; /* Heller Hintergrund */
+            color: #333333;
         }
 
         header {
@@ -76,6 +83,11 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        body.light-mode .box {
+            background-color: #f0f0f0; /* Heller Hintergrund für die Box */
+            color: #333333;
+        }
+
         .box:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
@@ -88,6 +100,10 @@
             transition: color 0.3s ease;
         }
 
+        body.light-mode h2 {
+            color: #007acc; /* Farbe im Light Mode */
+        }
+
         h2:hover {
             color: #ffcc00;
         }
@@ -96,6 +112,10 @@
             font-size: 18px;
             color: #d0d0d0;
             line-height: 1.6;
+        }
+
+        body.light-mode p {
+            color: #333333; /* Textfarbe im Light Mode */
         }
 
         .footer {
@@ -125,7 +145,7 @@
             border-bottom: 1px solid #ffcc00;
         }
 
-        /* Mobile Optimizations */
+        /* Mobile Optimierungen */
         @media screen and (max-width: 768px) {
             header {
                 padding: 15px;
@@ -167,7 +187,7 @@
             }
         }
 
-        /* Further Adjustments for Small Devices */
+        /* Weitere Anpassungen für kleine Geräte */
         @media screen and (max-width: 480px) {
             h1 {
                 font-size: 24px;
@@ -199,6 +219,7 @@
                 <li><a href="index.html">Startseite</a></li>
                 <li><a href="impressum.html">Impressum</a></li>
                 <li><a href="kontakt.html">Kontakt</a></li>
+                
             </ul>
         </nav>
     </header>
@@ -229,39 +250,36 @@
             <p>3.1 Sie haben gegenüber uns folgende Rechte hinsichtlich der Sie betreffenden personenbezogenen Daten:</p>
             <ul>
                 <li>Recht auf Auskunft,</li>
-                <li>Recht auf Berichtigung oder Löschung,</li>
+                <li>Recht auf Berichtigung,</li>
+                <li>Recht auf Löschung,</li>
                 <li>Recht auf Einschränkung der Verarbeitung,</li>
-                <li>Recht auf Widerspruch gegen die Verarbeitung,</li>
-                <li>Recht auf Datenübertragbarkeit.</li>
+                <li>Recht auf Datenübertragbarkeit,</li>
+                <li>Recht auf Widerspruch gegen die Verarbeitung.</li>
             </ul>
-            <p>3.2 Sie haben zudem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten durch uns zu beschweren. Landesbeauftragte für den Datenschutz und die Informationsfreiheit (LfDI), Lautenschlagerstraße 20, 70173 Stuttgart und <a class="email-link" href="https://www.baden-wuerttemberg.datenschutz.de/online-beschwerde/">https://www.baden-wuerttemberg.datenschutz.de/online-beschwerde/</a>.</p>
-            <p>3.4 Werden personenbezogene Daten an ein Drittland oder an eine internationale Organisation übermittelt, so haben Sie das Recht, über die geeigneten Garantien gemäß Art. 46 EU-DSGVO im Zusammenhang mit der Übermittlung unterrichtet zu werden.</p>
-        </div>
-
-        <div class="box">
-            <h2>Erhebung und Zweck personenbezogener Daten bei Besuch unserer Website</h2>
-            <p>4.1 Bei der bloß informatorischen Nutzung der Website, also wenn Sie sich nicht registrieren oder uns anderweitig Informationen übermitteln, erheben wir nur die personenbezogenen Daten, die Ihr Browser an unseren Server übermittelt. Wenn Sie unsere Website betrachten möchten, erheben wir die folgenden Daten, die für uns technisch erforderlich sind, um Ihnen unsere Website anzuzeigen und die Stabilität und Sicherheit zu gewährleisten (Rechtsgrundlage ist Art. 6 Abs. 1 S. 1 lit. f EU-DSGVO):</p>
-            <ul>
-                <li>IP-Adresse</li>
-                <li>Datum und Uhrzeit der Anfrage</li>
-                <li>Zeitzonendifferenz zur Greenwich Mean Time (GMT)</li>
-                <li>Inhalt der Anfrage (konkrete Seite)</li>
-                <li>Zugriffsstatus/HTTP-Statuscode</li>
-                <li>jeweils übertragene Datenmenge</li>
-                <li>Website, von der die Anfrage kommt</li>
-                <li>Browser</li>
-                <li>Betriebssystem und dessen Oberfläche</li>
-                <li>Sprache und Version der Browsersoftware.</li>
-            </ul>
-        </div>
-
-        <div class="box">
-            <h2>Technische Dienstleistungen</h2>
-            <p>5.1 Diese Webseite wird durch Webhosting-Dienste bereitgestellt. Im Rahmen dieser Dienste werden Informationen, die durch die Nutzung dieser Webseite entstehen, verarbeitet. Die diesbezügliche Datenschutzerklärung des Hosting-Anbieters finden Sie auf dessen Webseite.</p>
         </div>
     </div>
-    <footer class="footer">
-        <p>© 2024 Schulzentrum Oberes Elztal. Alle Rechte vorbehalten.</p>
-    </footer>
+    <div class="footer">
+        <p>&copy; 2024 Schulzentrum. Alle Rechte vorbehalten.</p>
+    </div>
+
+    <script>
+        const modeSwitch = document.getElementById('modeSwitch');
+
+        // Überprüfen, ob der Light Mode im localStorage gespeichert ist
+        if (localStorage.getItem('lightMode') === 'enabled') {
+            document.body.classList.add('light-mode');
+            modeSwitch.checked = true; // Schalter aktivieren
+        }
+
+        modeSwitch.addEventListener('change', () => {
+            if (modeSwitch.checked) {
+                document.body.classList.add('light-mode');
+                localStorage.setItem('lightMode', 'enabled');
+            } else {
+                document.body.classList.remove('light-mode');
+                localStorage.setItem('lightMode', 'disabled');
+            }
+        });
+    </script>
 </body>
 </html>

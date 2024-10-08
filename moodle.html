@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #141414;
+            background-color: #141414; /* Dunkler Hintergrund */
             margin: 0;
             padding: 0;
             display: flex;
@@ -17,18 +17,29 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            color: #e0e0e0;
+            color: #e0e0e0; /* Schriftfarbe für Dunkelmodus */
             text-align: center;
+            transition: background-color 0.5s, color 0.5s; /* Übergänge für Farben */
+        }
+
+        body.light-mode {
+            background-color: #ffffff; /* Heller Hintergrund */
+            color: #333333; /* Dunkle Schriftfarbe im Light Mode */
         }
 
         .navbar {
-            background-color: #1f1f1f;
+            background-color: #1f1f1f; /* Dunkle Navbar */
             padding: 15px 0;
             width: 100%;
             position: fixed;
             top: 0;
             left: 0;
             z-index: 1000;
+            transition: background-color 0.5s; /* Übergang für Navbar-Farbe */
+        }
+
+        .navbar.light-mode {
+            background-color: #f0f0f0; /* Helle Navbar im Light Mode */
         }
 
         .nav-links {
@@ -54,17 +65,8 @@
             color: #ff6b6b; /* Rote Farbe beim Hover */
         }
 
-        a {
-            color: #61dafb; /* Setze hier die gewünschte Farbe */
-            text-decoration: none; /* Optional: entfernt die Unterstreichung */
-        }
-
-        a:hover {
-            text-decoration: underline; /* Optional: Unterstreichung beim Hover */
-        }
-
         .container {
-            background-color: #1f1f1f;
+            background-color: #1f1f1f; /* Dunkler Container */
             border-radius: 12px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
             padding: 50px;
@@ -72,6 +74,11 @@
             max-width: 700px;
             margin-top: 100px; /* Platz für die Navigationsleiste */
             animation: fadeIn 1s ease-in-out;
+            transition: background-color 0.5s; /* Übergang für Container-Farbe */
+        }
+
+        body.light-mode .container {
+            background-color: #f9f9f9; /* Heller Container im Light Mode */
         }
 
         @keyframes fadeIn {
@@ -86,7 +93,7 @@
         }
 
         .logo-box {
-            background-color: #282828;
+            background-color: #282828; /* Dunkler Logo-Hintergrund */
             padding: 20px;
             margin-bottom: 20px;
             border-radius: 50%;
@@ -227,6 +234,9 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
             <li><a href="suche.html">Suche</a></li>
+            <li>
+              
+            </li>
         </ul>
     </div>
 
@@ -244,8 +254,27 @@
             Falls ihr Fragen habt, könnt ihr euch gerne an das <a href="#">Schulsekretariat</a> wenden. Wir danken euch für euer Verständnis!
         </p>
         <div class="footer">
-            © 2024 Schulzentrum Oberes Elztal, Alle Rechte vorbehalten. | <a href="impressum.html">Impressum</a>
+            © 2024 Schulzentrum Oberes Elztal, Alle Rechte vorbehalten. | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a>
         </div>
     </div>
+    <script>
+        const modeSwitch = document.getElementById('modeSwitch');
+
+// Überprüfen, ob der Light Mode im localStorage gespeichert ist
+if (localStorage.getItem('lightMode') === 'enabled') {
+    document.body.classList.add('light-mode');
+    modeSwitch.checked = true; // Schalter aktivieren
+}
+
+modeSwitch.addEventListener('change', () => {
+    if (modeSwitch.checked) {
+        document.body.classList.add('light-mode');
+        localStorage.setItem('lightMode', 'enabled');
+    } else {
+        document.body.classList.remove('light-mode');
+        localStorage.setItem('lightMode', 'disabled');
+    }
+});
+    </script>
 </body>
 </html>

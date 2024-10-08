@@ -7,13 +7,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="icon" href="logo.ico" type="image/x-icon">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #141414;
+        /* Globale Stile */
+        body, html {
             margin: 0;
             padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #141414; /* Dunkler Hintergrund */
             color: #e0e0e0;
             text-align: center;
+            scroll-behavior: smooth;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body.light-mode {
+            background-color: #ffffff; /* Heller Hintergrund */
+            color: #333333;
         }
 
         header {
@@ -24,6 +32,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        header.light-mode {
+            background-color: #f0f0f0; /* Heller Header Hintergrund */
+            color: #333333;
         }
 
         #schoolLogo {
@@ -84,6 +98,11 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        body.light-mode .box {
+            background-color: #ffffff; /* Heller Hintergrund für Boxen */
+            color: #333333; /* Dunklere Schriftfarbe im Light Mode */
+        }
+
         .box:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
@@ -128,121 +147,24 @@
             margin: 5px 0 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: #222;
-            color: #fff;
-            transition: border 0.3s;
+            background-color: #2b2b2b; /* Dunkler Hintergrund für Eingabefelder */
+            color: #e0e0e0;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
-        input[type="text"]:focus, input[type="email"]:focus, textarea:focus, select:focus {
-            border: 1px solid #61dafb;
-            outline: none;
+        body.light-mode input[type="text"],
+        body.light-mode input[type="email"],
+        body.light-mode textarea,
+        body.light-mode select {
+            background-color: #ffffff; /* Heller Hintergrund für Eingabefelder im Light Mode */
+            color: #333333;
+            border: 1px solid #ccc;
         }
 
-        input[type="submit"] {
-            background-color: #61dafb;
-            color: #141414;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #ffcc00;
-        }
-
-        label {
-            color: #d0d0d0;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .error {
-            color: red;
-            margin-top: -15px;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-
-        .email-link {
-            color: #00bcd4; /* Türkis für den Link */
-            text-decoration: none;
-        }
-
-        .email-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Media Queries für mobile Geräte */
-        @media (max-width: 768px) {
-            header {
-                padding: 10px 5px;
-            }
-
-            #schoolLogo {
-                position: relative;
-                left: 0;
-                top: 0;
-                height: 40px; /* Höhe des Logos für Mobilgeräte */
-                margin-bottom: 10px;
-            }
-
-            nav ul li {
-                display: block;
-                margin: 10px 0;
-            }
-
-            nav ul li a {
-                padding: 10px;
-                display: block;
-            }
-
-            h1 {
-                font-size: 28px;
-            }
-
+        /* Responsive Anpassungen */
+        @media (max-width: 600px) {
             .container {
-                width: 90%;
-            }
-
-            .box {
-                padding: 15px;
-            }
-
-            h2 {
-                font-size: 24px;
-            }
-
-            p {
-                font-size: 16px;
-            }
-
-            input[type="submit"] {
-                width: 100%;
-            }
-
-            input[type="text"], input[type="email"], textarea, select {
-                font-size: 16px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 24px;
-            }
-
-            .box {
-                padding: 10px;
-            }
-
-            input[type="text"], input[type="email"], textarea, select {
-                font-size: 14px;
-            }
-
-            input[type="submit"] {
-                font-size: 16px;
-                padding: 12px;
+                width: 90%; /* Breitere Box auf kleineren Bildschirmen */
             }
         }
     </style>
@@ -296,5 +218,37 @@
             </form>
         </div>
     </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Schulzentrum Oberes Elztal. Alle Rechte vorbehalten.</p>
+        <p><a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
+    </div>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            // Hier können Sie die Logik für die Formularverarbeitung hinzufügen.
+            alert("Formular wurde erfolgreich abgeschickt!");
+            this.reset(); // Formular zurücksetzen nach dem Absenden
+        });
+
+        const modeSwitch = document.getElementById('modeSwitch');
+
+// Überprüfen, ob der Light Mode im localStorage gespeichert ist
+if (localStorage.getItem('lightMode') === 'enabled') {
+    document.body.classList.add('light-mode');
+    modeSwitch.checked = true; // Schalter aktivieren
+}
+
+modeSwitch.addEventListener('change', () => {
+    if (modeSwitch.checked) {
+        document.body.classList.add('light-mode');
+        localStorage.setItem('lightMode', 'enabled');
+    } else {
+        document.body.classList.remove('light-mode');
+        localStorage.setItem('lightMode', 'disabled');
+    }
+});
+    </script>
 </body>
 </html>
