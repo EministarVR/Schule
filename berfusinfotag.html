@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Berufsinfotag - Schulzentrum Oberes Elztal">
+    <title>Berufsinfotag - Schulzentrum Oberes Elztal</title>
+    <link rel="icon" href="logo.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Globale Stile */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212; /* Standard: Dunkler Hintergrund */
+            color: #e0e0e0;
+            scroll-behavior: smooth;
+        }
+
+        /* Light-Mode Styling */
+        body.light-mode {
+            background-color: #f5f5f5; /* Heller Hintergrund */
+            color: #333;
+        }
+
+        body.light-mode .container {
+            background-color: #ffffff; /* Heller Container-Hintergrund */
+            color: #333;
+        }
+
+        body.light-mode .footer {
+            color: #666;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e1e1e, #383838); /* Dark Design */
+            padding: 20px 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        header img {
+            height: 60px;
+            transition: transform 0.5s ease;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-button {
+            padding: 10px 15px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .header-button:hover {
+            background-color: #1976D2; /* Dunkleres Blau beim Hover */
+        }
+
+        /* Hauptbereich */
+        .container {
+            max-width: 800px;
+            margin: 80px auto 40px;
+            padding: 20px;
+            text-align: center;
+            background-color: #1f1f1f;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #2196F3; /* Farbe der Titel */
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Farbe für <strong>-Elemente */
+        strong {
+            color: #2196F3;
+        }
+
+        /* Bild-Stil */
+        .event-image,
+        .additional-image {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0; /* Abstand oben und unten */
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer; /* Zeiger bei Hover */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .event-image:hover,
+        .additional-image:hover {
+            transform: scale(1.05); /* Vergrößerung bei Hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Schatten verstärken */
+        }
+
+        /* Fullscreen Bild Stil */
+        .fullscreen-image {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .fullscreen-image img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #61dafb;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Light-Mode Umschalter */
+        .light-mode-switch {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s;
+        }
+
+        .light-mode-switch:hover {
+            background: #1976D2;
+        }
+
+        /* Media Query für mobile Geräte */
+        @media (max-width: 768px) {
+            .text-content {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="Schulzentrum__1_-removebg-preview (1).png" alt="Schulzentrum Oberes Elztal"></a>
+        <div class="header-buttons">
+            <a href="index.html" class="header-button">Startseite</a>
+            <a href="news.html" class="header-button">News</a>
+            <a href="kontakt.html" class="header-button">Kontakt</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Berufsinfotag</h1>
+        <div class="content-wrapper">
+            <!-- Textinhalt -->
+            <div class="text-content">
+                <h1> Berufe entdecken und ausprobieren</h1>
+                <p>
+                    Der Berufsinfotag an unserer Schule war ein voller Erfolg! Schüler hatten die Möglichkeit, verschiedene Berufe kennenzulernen und direkt mit den Vertretern der Firmen zu sprechen. 
+                    Vom Handwerk über das Gesundheitswesen bis hin zu technischen Berufen gab es eine breite Palette an Informationen und praktischen Übungen.
+
+                    In Workshops konnten die Schüler nicht nur mehr über die Anforderungen und Möglichkeiten der einzelnen Berufe erfahren, sondern auch praktische Erfahrungen sammeln. 
+                    Die Begeisterung der Jugendlichen war deutlich spürbar, als sie die Chance hatten, selbst Hand anzulegen und sich auszuprobieren.
+
+                    Ein herzliches Dankeschön an alle Firmen und Referenten, die diesen Tag möglich gemacht haben. 
+                    Wir hoffen, dass viele Schüler durch diese Veranstaltung inspiriert wurden, ihren Traumberuf zu finden! 🚀
+                </p>
+                <p><strong>Das SOE</strong></p>
+            </div>
+
+            <!-- Bild rechts positioniert -->
+            <img src="berufsinfotag.png" alt="Berufsinfotag Veranstaltung" class="event-image" onclick="openFullscreen(this)">
+        </div>
+
+        <!-- Zusätzliches Bild unter dem ersten Bild -->
+        <img src="berufsinfotag1.png" alt="Zusätzliches Bild des Berufsinfotags" class="additional-image" onclick="openFullscreen(this)">
+        <img src="berufsinfotag2.png" alt="Zusätzliches Bild des Berufsinfotags" class="additional-image" onclick="openFullscreen(this)">
+    </div>
+
+    <!-- Vollbild Bild Container -->
+    <div class="fullscreen-image" id="fullscreenImage" onclick="closeFullscreen()">
+        <img id="fullscreenImg" alt="Fullscreen Bild">
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Schulzentrum Oberes Elztal | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
+    </footer>
+
+    <script>
+        const modeSwitch = document.getElementById('modeSwitch');
+
+        // Überprüfen, ob der Light Mode im localStorage gespeichert ist
+        if (localStorage.getItem('lightMode') === 'enabled') {
+            document.body.classList.add('light-mode');
+        }
+
+        // Light Mode umschalten
+        function toggleLightMode() {
+            document.body.classList.toggle('light-mode');
+            const lightModeEnabled = document.body.classList.contains('light-mode');
+            localStorage.setItem('lightMode', lightModeEnabled ? 'enabled' : 'disabled');
+        }
+
+        // Vollbildmodus aktivieren
+        function openFullscreen(img) {
+            const fullscreenImg = document.getElementById('fullscreenImg');
+            const fullscreenContainer = document.getElementById('fullscreenImage');
+
+            fullscreenImg.src = img.src; // Bildquelle auf das angeklickte Bild setzen
+            fullscreenContainer.style.display = 'flex'; // Vollbildcontainer anzeigen
+        }
+
+        // Vollbildmodus schließen
+        function closeFullscreen() {
+            document.getElementById('fullscreenImage').style.display = 'none'; // Vollbildcontainer ausblenden
+        }
+    </script>
+</body>
+</html>

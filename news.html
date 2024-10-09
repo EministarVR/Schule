@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="News - Schulzentrum Oberes Elztal">
+    <title>News - Schulzentrum Oberes Elztal</title>
+    <link rel="icon" href="logo.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Globale Stile */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212; /* Dunkler Hintergrund */
+            color: #e0e0e0;
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e1e1e, #383838);
+            padding: 20px 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        header img {
+            height: 60px;
+            transition: transform 0.5s ease;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-button {
+            padding: 10px 15px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .header-button:hover {
+            background-color: #1976D2; /* Dunkleres Blau beim Hover */
+        }
+
+        /* Hauptbereich */
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 40px;
+            padding: 20px;
+        }
+
+        .news-title {
+            text-align: center;
+            color: #2196F3; /* Farbe der Titel */
+        }
+
+        /* News-Boxen */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .news-box {
+            background-color: #1f1f1f;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .news-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .news-box img {
+            width: 100%;
+            height: 180px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .news-box h3 {
+            margin: 0 0 10px;
+            font-weight: 600;
+            color: #2196F3;
+        }
+
+        .news-box p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            padding: 10px 15px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .read-more:hover {
+            background-color: #1976D2;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #61dafb;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="Schulzentrum__1_-removebg-preview (1).png" alt="Schulzentrum Oberes Elztal"></a>
+        <div class="header-buttons">
+            <a href="index.html" class="header-button">Startseite</a>
+            <a href="news.html" class="header-button">News</a>
+            <a href="kontakt.html" class="header-button">Kontakt</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="news-title">Aktuelle News</h1>
+        <div class="news-grid">
+            <!-- News-Box 1 -->
+            <div class="news-box">
+                <img src="schulhock3.png" alt="Schulhock">
+                <h3>Schulhock 2024 - Ein voller Erfolg!</h3>
+                <p>Schulhock am 18.10.2024 – Ein Abend für unsere Schulgemeinschaft!
+
+                    Wir laden alle Eltern, Schüler
+                    und Freund
+                    des SOE herzlich zu unserem Schulhock in die Turnhalle ein. Es erwartet euch eine gesellige Atmosphäre mit leckerem Essen, Getränken und einem Spielmobil für die Kleinen. Kommt vorbei und verbringt einen schönen Abend mit uns!
+                    
+                    Freitag, 18. Oktober 2024, ab 18:00 Uhr. Wir freuen uns auf euch!</p>
+                <a href="schulhock.html" class="read-more">Weiterlesen</a>
+            </div>
+
+            <!-- News-Box 2 -->
+            <div class="news-box">
+                <img src="poetryslam1.png" alt="Poetry Slam Workshop">
+                <h3>Poetry Slam Workshop</h3>
+                <p>Poetry Slam Workshop an unserer Schule! 🎤✍️
+                    Kreativität und Sprachkunst standen im Mittelpunkt unseres Poetry Slam Workshops. Die Schüler
+                    konnten ihre eigenen Texte schreiben und vortragen, unterstützt von erfahrenen Slammern. Ein inspirierendes Erlebnis, das Lust auf mehr macht!</p>
+                <a href="poertyslam.html" class="read-more">Weiterlesen</a>
+            </div>
+
+            <!-- News-Box 3 -->
+            <div class="news-box">
+                <img src="berufsinfotag.png"Wettbewerb Bild">
+                <h3>14. Berufsinfotag 2024 – Ein großer Erfolg!</h3>
+                <p>
+                    Am 30. September 2024 fand der 14. Berufsinfotag in Elzach statt. Zahlreiche Aussteller präsentierten sich in der Turnhalle und der Vorhalle, während auf dem Schulhof spannende Informationen über Berufe im Bauwesen vermittelt wurden. Viele Schüler
+                    nutzten die Gelegenheit, um Kontakte zu knüpfen und Praktikumsplätze zu ergattern. Die Klasse W6b sorgte für das leibliche Wohl mit Häppchen und Getränken. Vielen Dank an alle Beteiligten für eine gelungene Veranstaltung! Wir freuen uns auf den nächsten Berufsinfotag!</p>
+                <a href="berfusinfotag.html" class="read-more">Weiterlesen</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Schulzentrum Oberes Elztal | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a> </p>
+    </footer>
+</body>
+</html>

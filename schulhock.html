@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Schulhock - Schulzentrum Oberes Elztal">
+    <title>Schulhock - Schulzentrum Oberes Elztal</title>
+    <link rel="icon" href="logo.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Globale Stile */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212; /* Standard: Dunkler Hintergrund */
+            color: #e0e0e0;
+            scroll-behavior: smooth;
+        }
+
+        /* Light-Mode Styling */
+        body.light-mode {
+            background-color: #f5f5f5; /* Heller Hintergrund */
+            color: #333;
+        }
+
+        body.light-mode .container {
+            background-color: #ffffff; /* Heller Container-Hintergrund */
+            color: #333;
+        }
+
+        body.light-mode .footer {
+            color: #666;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e1e1e, #383838); /* Dark Design */
+            padding: 20px 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        header img {
+            height: 60px;
+            transition: transform 0.5s ease;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-button {
+            padding: 10px 15px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .header-button:hover {
+            background-color: #1976D2; /* Dunkleres Blau beim Hover */
+        }
+
+        /* Hauptbereich */
+        .container {
+            max-width: 800px;
+            margin: 80px auto 40px;
+            padding: 20px;
+            text-align: left; /* Text links ausrichten */
+            background-color: #1f1f1f;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            align-items: flex-start; /* Elemente oben ausrichten */
+            gap: 20px; /* Abstand zwischen Bild und Text */
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Textbereich in Container */
+        .text-content {
+            flex: 1; /* Nimmt den restlichen Platz ein */
+        }
+
+        h1 {
+            color: #2196F3; /* Farbe der Titel */
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Farbe für <strong>-Elemente */
+        strong {
+            color: #2196F3;
+        }
+
+        /* Bild-Stil */
+        .event-image {
+            width: 40%; /* Breite des Bildes */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #61dafb;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Light-Mode Umschalter */
+        .light-mode-switch {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s;
+        }
+
+        .light-mode-switch:hover {
+            background: #1976D2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="Schulzentrum__1_-removebg-preview (1).png" alt="Schulzentrum Oberes Elztal"></a>
+        <div class="header-buttons">
+            <a href="index.html" class="header-button">Startseite</a>
+            <a href="news.html" class="header-button">News</a>
+            <a href="kontakt.html" class="header-button">Kontakt</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Textbereich -->
+        <div class="text-content">
+            <h1>Schulhock am 18. Oktober 2024</h1>
+          <p>  Liebe Freundinnen und Freunde des SOE,
+
+wir freuen uns riesig, Sie und euch zu unserem großen Schulhock am Freitag, den 18. Oktober 2024 in unserer Turnhalle einzuladen! 🎉
+
+Dieser besondere Abend steht ganz im Zeichen der Gemeinschaft, des Kennenlernens und des gemütlichen Beisammenseins. In entspannter Atmosphäre möchten wir die Möglichkeit bieten, sich untereinander auszutauschen, neue Kontakte zu knüpfen und einfach eine schöne Zeit miteinander zu verbringen.
+
+Für das leibliche Wohl wird mit einer leckeren Auswahl an Speisen und Getränken gesorgt sein. 🍽️🥤 Zudem wartet auf unsere kleinen Gäste ein spannendes Spielmobil mit vielen tollen Aktivitäten. 🛝
+
+Unser Schulhock soll ein Ort der Begegnung sein – für Eltern, Schüler
+, Lehrer
+und alle weiteren Freunde des SOE. Lasst uns gemeinsam einen wunderbaren Abend erleben!
+
+Wir freuen uns sehr darauf, Sie und euch alle in großer Zahl begrüßen zu dürfen! ✨
+
+Mit herzlichen Grüßen</p>
+            <p><strong>Das SOE</strong></p>
+        </div>
+
+        <!-- Bildbereich -->
+        <img src="schulhock.png" alt="Schulhock Veranstaltung" class="event-image">
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Schulzentrum Oberes Elztal | <a href="impressum.html">Impressum</a></p>
+    </footer>
+
+    <script>
+        const modeSwitch = document.getElementById('modeSwitch');
+
+// Überprüfen, ob der Light Mode im localStorage gespeichert ist
+if (localStorage.getItem('lightMode') === 'enabled') {
+    document.body.classList.add('light-mode');
+    modeSwitch.checked = true; // Schalter aktivieren
+}
+
+modeSwitch.addEventListener('change', () => {
+    if (modeSwitch.checked) {
+        document.body.classList.add('light-mode');
+        localStorage.setItem('lightMode', 'enabled');
+    } else {
+        document.body.classList.remove('light-mode');
+        localStorage.setItem('lightMode', 'disabled');
+    }
+});
+    </script>
+   
+</body>
+</html>
