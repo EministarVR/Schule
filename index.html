@@ -338,7 +338,27 @@
         </div>
     </div>
 
-    <script>
+ <script>
+        const modeSwitch = document.getElementById('modeSwitch');
+    
+        // Überprüfen, ob der Light Mode im localStorage gespeichert ist
+        if (localStorage.getItem('lightMode') === 'enabled') {
+            document.body.classList.add('light-mode');
+            modeSwitch.checked = true; // Schalter aktivieren
+        }
+    
+        modeSwitch.addEventListener('change', () => {
+            if (modeSwitch.checked) {
+                document.body.classList.add('light-mode');
+                localStorage.setItem('lightMode', 'enabled');
+            } else {
+                document.body.classList.remove('light-mode');
+                localStorage.setItem('lightMode', 'disabled');
+            }
+        });
+
+
+    
         // Dark/Light Mode Toggle
         const modeToggle = document.getElementById('mode-toggle');
         const body = document.body;
