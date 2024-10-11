@@ -275,78 +275,60 @@
 </head>
 <body>
     <header>
-        <img src="logo.ico" alt="Logo">
-        <div class="menu-toggle" id="hamburger">
+        <img src="logo.png" alt="Logo" id="logo">
+        <div class="menu-toggle" id="menu-toggle">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        <nav class="header-buttons" id="menu">
-            <a href="index.html" class="header-button">Startseite</a>
-            <a href="news.html" class="header-button">News</a>
-            <a href="moodle.html" class="header-button">Moodle</a>
-            <a href="kontakt.html" class="header-button">Kontakt</a>
-         </nav>
+        <div class="header-buttons">
+            <a href="#" class="header-button">Home</a>
+            <a href="#" class="header-button">Features</a>
+            <a href="#" class="header-button">Contact</a>
+        </div>
     </header>
 
     <div class="container">
-        <h1 id="greeting"></h1>
-        <p>Schön, dass du wieder hier bist.</p>
+        <h1>Welcome to the Schulzentrum Oberes Elztal</h1>
+        <p>Type your name below:</p>
+        <input type="text" id="nameField" placeholder="Enter your name">
+        <button onclick="displayAndResetName()">Submit</button>
+        <p id="displayedName"></p>
     </div>
 
     <div class="switch-box">
-        <h2>Licht/Dunkel Modus</h2>
         <label class="switch">
-            <input type="checkbox" id="modeToggle">
+            <input type="checkbox" id="mode-switch">
             <div class="slider">
-                <div class="sun"></div>
                 <div class="sun-ring"></div>
+                <div class="sun"></div>
                 <div class="moon"></div>
             </div>
         </label>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const storedName = localStorage.getItem('userName');
-            const greetingElement = document.getElementById('greeting');
-
-            if (storedName) {
-                greetingElement.textContent = `Herzlich Willkommen zurück, ${storedName}!`;
-            } else {
-                const userName = prompt('Oh, Sie sind neu hier, sagen Sie uns doch Ihren Namen:');
-                if (userName) {
-                    localStorage.setItem('userName', userName);
-                    greetingElement.textContent = `Herzlich Willkommen zurück, ${userName}!`;
-                } else {
-                    greetingElement.textContent = 'Willkommen, Gast!';
-                }
-            }
-
-            const modeToggle = document.getElementById('modeToggle');
-            const body = document.body;
-
-            // Prüfen, ob der Nutzer schon eine Präferenz hat
-            if (localStorage.getItem('mode') === 'light') {
-                body.classList.add('light-mode');
-                modeToggle.checked = true;
-            }
-
-            // Event-Listener für den Modus-Schalter
-            modeToggle.addEventListener('change', () => {
-                body.classList.toggle('light-mode');
-                const mode = body.classList.contains('light-mode') ? 'light' : 'dark';
-                localStorage.setItem('mode', mode);
-            });
-
-            // Hamburger-Menü öffnen/schließen
-            const hamburger = document.getElementById('hamburger');
-            const menu = document.getElementById('menu');
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('open');
-                menu.classList.toggle('open');
-            });
+        // Toggle Light/Dark Mode
+        const switchInput = document.getElementById('mode-switch');
+        switchInput.addEventListener('change', () => {
+            document.body.classList.toggle('light-mode');
         });
+
+        // Menu Toggle for Mobile
+        const menuToggle = document.getElementById('menu-toggle');
+        const headerButtons = document.querySelector('.header-buttons');
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('open');
+            headerButtons.classList.toggle('open');
+        });
+
+        // Function to display and reset the entered name
+        function displayAndResetName() {
+            const nameField = document.getElementById('nameField');
+            const displayedName = document.getElementById('displayedName');
+            displayedName.textContent = `Hello, ${nameField.value}!`;
+            nameField.value = ''; // Reset the input field after submission
+        }
     </script>
 </body>
 </html>
