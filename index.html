@@ -52,19 +52,77 @@
             transition: transform 0.5s ease;
         }
 
-        /* Willkommensbox */
-        .welcome-box {
-            background-color: #292929;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            color: #f0f0f0;
+        /* Hamburger-Menü */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
         }
 
-        body.light-mode .welcome-box {
-            background-color: #f0f0f0;
-            color: #333;
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Menü-Links */
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-button {
+            padding: 10px 15px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .header-button:hover {
+            background-color: #1976D2; /* Dunkleres Blau beim Hover */
+        }
+
+        /* Responsive Design für Mobilgeräte */
+        @media (max-width: 768px) {
+            .header-buttons {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                background: linear-gradient(135deg, #1e1e1e, #383838);
+                padding: 20px;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                z-index: 999;
+            }
+
+            .header-buttons.open {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
         }
 
         /* Container */
@@ -84,109 +142,210 @@
             color: #333333;
         }
 
-        /* Namenseingabe Sektion */
-        .name-box {
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Switch-Box für Light/Dark Mode */
+        .switch-box {
+            margin: 50px auto;
             background-color: #292929;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            width: 350px;
             text-align: center;
+            transition: background-color 0.5s ease, box-shadow 0.5s ease, transform 0.3s ease;
         }
 
-        body.light-mode .name-box {
-            background-color: #f0f0f0;
-            color: #333;
+        body.light-mode .switch-box {
+            background-color: #e0e0e0;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
 
-        input[type="text"] {
-            padding: 10px;
-            width: 100%;
-            margin-top: 10px;
-            border-radius: 5px;
-            border: none;
-            font-size: 16px;
+        .switch-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
-        button {
-            margin-top: 10px;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            background-color: #2196F3;
-            color: white;
-            font-size: 16px;
+        /* Switch-Button */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 100px;
+            height: 50px;
+            background-color: #ccc;
+            border-radius: 50px;
             cursor: pointer;
+            transition: background-color 0.5s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        button:hover {
-            background-color: #1976D2;
+        .switch input {
+            display: none;
         }
 
+        .slider {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: left 0.5s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .switch input:checked + .slider {
+            left: 55px;
+        }
+
+        .sun {
+            position: absolute;
+            top: 0;
+            left: 5px;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle at center, #ffdf00, #ff9d00);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 223, 0, 0.5);
+            transition: transform 0.5s, opacity 0.5s; 
+            opacity: 0;
+        }
+
+        .switch input:checked + .slider .sun {
+            opacity: 1;
+        }
+
+        .sun-ring {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 223, 0, 0.5);
+            box-shadow: 0 0 20px rgba(255, 223, 0, 0.7);
+            transition: opacity 0.5s;
+            opacity: 0;
+        }
+
+        .switch input:checked + .slider .sun-ring {
+            opacity: 1;
+        }
+
+        .moon {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 25px;
+            height: 25px;
+            background: radial-gradient(circle at 15px 15px, #ffffff, #ccc);
+            border-radius: 50%;
+            transition: transform 0.5s, opacity 0.5s; 
+            opacity: 0;
+        }
+
+        .switch input:checked + .slider .moon {
+            opacity: 1;
+        }
+
+        .moon:before, .moon:after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .moon:before {
+            width: 6px;
+            height: 6px;
+            top: 4px;
+            left: 5px;
+        }
+
+        .moon:after {
+            width: 4px;
+            height: 4px;
+            top: 10px;
+            left: 15px;
+        }
     </style>
 </head>
-
 <body>
     <header>
-        <img src="logo.png" alt="Logo" id="logo">
-        <div class="menu-toggle" id="menu-toggle">
+        <img src="logo.ico" alt="Logo">
+        <div class="menu-toggle" id="hamburger">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        <div class="header-buttons">
-            <a href="#" class="header-button">Home</a>
-            <a href="#" class="header-button">Features</a>
+        <nav class="header-buttons" id="menu">
+            <a href="#" class="header-button">Startseite</a>
+            <a href="#" class="header-button">Über uns</a>
             <a href="#" class="header-button">Kontakt</a>
-        </div>
+        </nav>
     </header>
 
-    <!-- Willkommensbox -->
-    <div class="welcome-box" id="welcomeBox">
-        <h1>Herzlich willkommen beim Schulzentrum Oberes Elztal</h1>
-        <p id="welcomeName"></p>
+    <div class="container">
+        <h1 id="greeting"></h1>
+        <p>Schön, dass du wieder hier bist.</p>
     </div>
 
-    <!-- Namenseingabe Sektion -->
-    <div class="name-box">
-        <h2>Gib deinen Namen ein:</h2>
-        <input type="text" id="nameField" placeholder="Dein Name">
-        <button onclick="displayAndStoreName()">Speichern</button>
-        <button onclick="resetName()">Namen zurücksetzen</button>
-        <p id="displayedName"></p>
+    <div class="switch-box">
+        <h2>Licht/Dunkel Modus</h2>
+        <label class="switch">
+            <input type="checkbox" id="modeToggle">
+            <div class="slider">
+                <div class="sun"></div>
+                <div class="sun-ring"></div>
+                <div class="moon"></div>
+            </div>
+        </label>
     </div>
 
     <script>
-        // Funktion zum Anzeigen und Speichern des Namens
-        function displayAndStoreName() {
-            const nameField = document.getElementById('nameField');
-            const displayedName = document.getElementById('displayedName');
-            const welcomeName = document.getElementById('welcomeName');
-            const name = nameField.value;
+        document.addEventListener('DOMContentLoaded', () => {
+            const storedName = localStorage.getItem('userName');
+            const greetingElement = document.getElementById('greeting');
 
-            if (name) {
-                displayedName.textContent = `Hallo, ${name}!`;
-                welcomeName.textContent = name;
-                localStorage.setItem('username', name); // Speichern im lokalen Speicher
+            if (storedName) {
+                greetingElement.textContent = `Herzlich Willkommen zurück, ${storedName}!`;
+            } else {
+                const userName = prompt('Oh, Sie sind neu hier, sagen Sie uns doch Ihren Namen:');
+                if (userName) {
+                    localStorage.setItem('userName', userName);
+                    greetingElement.textContent = `Herzlich Willkommen zurück, ${userName}!`;
+                } else {
+                    greetingElement.textContent = 'Willkommen, Gast!';
+                }
             }
-        }
 
-        // Funktion zum Zurücksetzen des Namens
-        function resetName() {
-            localStorage.removeItem('username');
-            document.getElementById('displayedName').textContent = "";
-            document.getElementById('welcomeName').textContent = "";
-        }
+            const modeToggle = document.getElementById('modeToggle');
+            const body = document.body;
 
-        // Beim Laden der Seite den Namen wieder anzeigen
-        window.onload = () => {
-            const savedName = localStorage.getItem('username');
-            if (savedName) {
-                document.getElementById('displayedName').textContent = `Hallo, ${savedName}!`;
-                document.getElementById('welcomeName').textContent = savedName;
+            // Prüfen, ob der Nutzer schon eine Präferenz hat
+            if (localStorage.getItem('mode') === 'light') {
+                body.classList.add('light-mode');
+                modeToggle.checked = true;
             }
-        };
+
+            // Event-Listener für den Modus-Schalter
+            modeToggle.addEventListener('change', () => {
+                body.classList.toggle('light-mode');
+                const mode = body.classList.contains('light-mode') ? 'light' : 'dark';
+                localStorage.setItem('mode', mode);
+            });
+
+            // Hamburger-Menü öffnen/schließen
+            const hamburger = document.getElementById('hamburger');
+            const menu = document.getElementById('menu');
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('open');
+                menu.classList.toggle('open');
+            });
+        });
     </script>
 </body>
 </html>
