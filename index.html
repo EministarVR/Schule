@@ -147,6 +147,46 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
+        /* Sektion für die Namenseingabe */
+        .name-box {
+            background-color: #292929;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            text-align: center;
+        }
+
+        body.light-mode .name-box {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #2196F3;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1976D2;
+        }
+
         /* Switch-Box für Light/Dark Mode */
         .switch-box {
             margin: 50px auto;
@@ -228,51 +268,27 @@
             background: rgba(255, 223, 0, 0.5);
             box-shadow: 0 0 20px rgba(255, 223, 0, 0.7);
             transition: opacity 0.5s;
-            opacity: 0;
-        }
-
-        .switch input:checked + .slider .sun-ring {
             opacity: 1;
         }
 
         .moon {
             position: absolute;
-            top: 5px;
+            top: 0;
             left: 5px;
-            width: 25px;
-            height: 25px;
-            background: radial-gradient(circle at 15px 15px, #ffffff, #ccc);
+            width: 30px;
+            height: 30px;
+            background-color: #f5f3ce;
             border-radius: 50%;
-            transition: transform 0.5s, opacity 0.5s; 
-            opacity: 0;
+            box-shadow: 0 0 10px rgba(245, 243, 206, 0.5);
+            transition: opacity 0.5s, transform 0.5s;
         }
 
         .switch input:checked + .slider .moon {
-            opacity: 1;
-        }
-
-        .moon:before, .moon:after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.7);
-        }
-
-        .moon:before {
-            width: 6px;
-            height: 6px;
-            top: 4px;
-            left: 5px;
-        }
-
-        .moon:after {
-            width: 4px;
-            height: 4px;
-            top: 10px;
-            left: 15px;
+            opacity: 0;
         }
     </style>
 </head>
+
 <body>
     <header>
         <img src="logo.png" alt="Logo" id="logo">
@@ -284,18 +300,19 @@
         <div class="header-buttons">
             <a href="#" class="header-button">Home</a>
             <a href="#" class="header-button">Features</a>
-            <a href="#" class="header-button">Contact</a>
+            <a href="#" class="header-button">Kontakt</a>
         </div>
     </header>
 
-    <div class="container">
-        <h1>Welcome to the Schulzentrum Oberes Elztal</h1>
-        <p>Type your name below:</p>
-        <input type="text" id="nameField" placeholder="Enter your name">
-        <button onclick="displayAndResetName()">Submit</button>
+    <!-- Namenseingabe Sektion -->
+    <div class="name-box">
+        <h2>Gib deinen Namen ein:</h2>
+        <input type="text" id="nameField" placeholder="Dein Name">
+        <button onclick="displayAndStoreName()">Speichern</button>
         <p id="displayedName"></p>
     </div>
 
+    <!-- Light/Dark Mode Switch -->
     <div class="switch-box">
         <label class="switch">
             <input type="checkbox" id="mode-switch">
@@ -308,13 +325,13 @@
     </div>
 
     <script>
-        // Toggle Light/Dark Mode
+        // Light/Dark Mode Toggle
         const switchInput = document.getElementById('mode-switch');
         switchInput.addEventListener('change', () => {
             document.body.classList.toggle('light-mode');
         });
 
-        // Menu Toggle for Mobile
+        // Menü Toggle für Mobile
         const menuToggle = document.getElementById('menu-toggle');
         const headerButtons = document.querySelector('.header-buttons');
         menuToggle.addEventListener('click', () => {
@@ -322,13 +339,22 @@
             headerButtons.classList.toggle('open');
         });
 
-        // Function to display and reset the entered name
-        function displayAndResetName() {
+        // Funktion zum Anzeigen und Speichern des Namens
+        function displayAndStoreName() {
             const nameField = document.getElementById('nameField');
             const displayedName = document.getElementById('displayedName');
-            displayedName.textContent = `Hello, ${nameField.value}!`;
-            nameField.value = ''; // Reset the input field after submission
+            const name = nameField.value;
+            displayedName.textContent = `Hallo, ${name}!`;
+            localStorage.setItem('username', name); // Speichern im lokalen Speicher
         }
+
+        // Beim Laden der Seite den Namen wieder anzeigen
+        window.onload = () => {
+            const savedName = localStorage.getItem('username');
+            if (savedName) {
+                document.getElementById('displayedName').textContent = `Hallo, ${savedName}!`;
+            }
+        };
     </script>
 </body>
 </html>
