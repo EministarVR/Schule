@@ -281,61 +281,68 @@
             <span></span>
             <span></span>
         </div>
-        <div class="header-buttons">
-            <a href="index.html" class="header-button">Home</a>
-            <a href="news.html" class="header-button">News</a>
-            <a href="moodle.html" class="header-button">Moodle</a>
-        </div>
+        <nav class="header-buttons" id="menu">
+            <a href="#" class="header-button">Startseite</a>
+            <a href="#" class="header-button">Über uns</a>
+            <a href="#" class="header-button">Kontakt</a>
+        </nav>
     </header>
 
     <div class="container">
-        <h1>Willkommen im Schulzentrum Oberes Elztal</h1>
-        <p>Die beste Schule für Ihre Kinder.</p>
+        <h1>Willkommen, <span id="userName">Gast</span>!</h1>
+        <p>Schön, dass du wieder hier bist.</p>
     </div>
 
     <div class="switch-box">
+        <h2>Licht/Dunkel Modus</h2>
         <label class="switch">
-            <input type="checkbox" id="mode-toggle">
+            <input type="checkbox" id="modeToggle">
             <div class="slider">
-                <div class="sun">
-                    <div class="sun-ring"></div>
-                </div>
+                <div class="sun"></div>
+                <div class="sun-ring"></div>
                 <div class="moon"></div>
             </div>
         </label>
-        <p>Umschalten zwischen Dark Mode und Light Mode</p>
     </div>
 
-  <script>
-    // Beim Laden der Seite den gespeicherten Modus aus dem localStorage abrufen
-    document.addEventListener('DOMContentLoaded', () => {
-        const savedMode = localStorage.getItem('themeMode');
-        if (savedMode === 'light') {
-            document.body.classList.add('light-mode');
-            modeToggle.checked = true; // Setzt den Toggle-Switch auf die richtige Position
-        }
-    });
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const storedName = localStorage.getItem('userName');
+            const userNameSpan = document.getElementById('userName');
+            if (storedName) {
+                userNameSpan.textContent = storedName;
+            } else {
+                const userName = prompt('Wie ist dein Name?');
+                if (userName) {
+                    localStorage.setItem('userName', userName);
+                    userNameSpan.textContent = userName;
+                }
+            }
 
-    // Light/Dark Mode Umschaltung
-    const modeToggle = document.getElementById('mode-toggle');
-    modeToggle.addEventListener('change', () => {
-        if (modeToggle.checked) {
-            document.body.classList.add('light-mode');
-            localStorage.setItem('themeMode', 'light'); // Speichert den Light Mode in localStorage
-        } else {
-            document.body.classList.remove('light-mode');
-            localStorage.setItem('themeMode', 'dark'); // Speichert den Dark Mode in localStorage
-        }
-    });
+            const modeToggle = document.getElementById('modeToggle');
+            const body = document.body;
 
-    // Hamburger-Menü Steuerung
-    const hamburger = document.getElementById('hamburger');
-    const menu = document.querySelector('.header-buttons');
+            // Prüfen, ob der Nutzer schon eine Präferenz hat
+            if (localStorage.getItem('mode') === 'light') {
+                body.classList.add('light-mode');
+                modeToggle.checked = true;
+            }
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('open');
-        menu.classList.toggle('open');
-    });
-</script>
+            // Event-Listener für den Modus-Schalter
+            modeToggle.addEventListener('change', () => {
+                body.classList.toggle('light-mode');
+                const mode = body.classList.contains('light-mode') ? 'light' : 'dark';
+                localStorage.setItem('mode', mode);
+            });
+
+            // Hamburger-Menü öffnen/schließen
+            const hamburger = document.getElementById('hamburger');
+            const menu = document.getElementById('menu');
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('open');
+                menu.classList.toggle('open');
+            });
+        });
+    </script>
 </body>
 </html>
