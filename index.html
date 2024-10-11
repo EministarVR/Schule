@@ -52,77 +52,19 @@
             transition: transform 0.5s ease;
         }
 
-        /* Hamburger-Menü */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
+        /* Willkommensbox */
+        .welcome-box {
+            background-color: #292929;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: #f0f0f0;
         }
 
-        .menu-toggle span {
-            width: 30px;
-            height: 3px;
-            background-color: white;
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle.open span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .menu-toggle.open span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.open span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        /* Menü-Links */
-        .header-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .header-button {
-            padding: 10px 15px;
-            background-color: #2196F3;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .header-button:hover {
-            background-color: #1976D2; /* Dunkleres Blau beim Hover */
-        }
-
-        /* Responsive Design für Mobilgeräte */
-        @media (max-width: 768px) {
-            .header-buttons {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                right: 20px;
-                background: linear-gradient(135deg, #1e1e1e, #383838);
-                padding: 20px;
-                border-radius: 12px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-                z-index: 999;
-            }
-
-            .header-buttons.open {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
+        body.light-mode .welcome-box {
+            background-color: #f0f0f0;
+            color: #333;
         }
 
         /* Container */
@@ -142,12 +84,7 @@
             color: #333333;
         }
 
-        .container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Sektion für die Namenseingabe */
+        /* Namenseingabe Sektion */
         .name-box {
             background-color: #292929;
             margin: 20px auto;
@@ -187,105 +124,6 @@
             background-color: #1976D2;
         }
 
-        /* Switch-Box für Light/Dark Mode */
-        .switch-box {
-            margin: 50px auto;
-            background-color: #292929;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-            width: 350px;
-            text-align: center;
-            transition: background-color 0.5s ease, box-shadow 0.5s ease, transform 0.3s ease;
-        }
-
-        body.light-mode .switch-box {
-            background-color: #e0e0e0;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .switch-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Switch-Button */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 100px;
-            height: 50px;
-            background-color: #ccc;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: background-color 0.5s;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .switch input {
-            display: none;
-        }
-
-        .slider {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            transition: left 0.5s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .switch input:checked + .slider {
-            left: 55px;
-        }
-
-        .sun {
-            position: absolute;
-            top: 0;
-            left: 5px;
-            width: 30px;
-            height: 30px;
-            background: radial-gradient(circle at center, #ffdf00, #ff9d00);
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(255, 223, 0, 0.5);
-            transition: transform 0.5s, opacity 0.5s; 
-            opacity: 0;
-        }
-
-        .switch input:checked + .slider .sun {
-            opacity: 1;
-        }
-
-        .sun-ring {
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 223, 0, 0.5);
-            box-shadow: 0 0 20px rgba(255, 223, 0, 0.7);
-            transition: opacity 0.5s;
-            opacity: 1;
-        }
-
-        .moon {
-            position: absolute;
-            top: 0;
-            left: 5px;
-            width: 30px;
-            height: 30px;
-            background-color: #f5f3ce;
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(245, 243, 206, 0.5);
-            transition: opacity 0.5s, transform 0.5s;
-        }
-
-        .switch input:checked + .slider .moon {
-            opacity: 0;
-        }
     </style>
 </head>
 
@@ -304,48 +142,41 @@
         </div>
     </header>
 
+    <!-- Willkommensbox -->
+    <div class="welcome-box" id="welcomeBox">
+        <h1>Herzlich willkommen beim Schulzentrum Oberes Elztal</h1>
+        <p id="welcomeName"></p>
+    </div>
+
     <!-- Namenseingabe Sektion -->
     <div class="name-box">
         <h2>Gib deinen Namen ein:</h2>
         <input type="text" id="nameField" placeholder="Dein Name">
         <button onclick="displayAndStoreName()">Speichern</button>
+        <button onclick="resetName()">Namen zurücksetzen</button>
         <p id="displayedName"></p>
     </div>
 
-    <!-- Light/Dark Mode Switch -->
-    <div class="switch-box">
-        <label class="switch">
-            <input type="checkbox" id="mode-switch">
-            <div class="slider">
-                <div class="sun-ring"></div>
-                <div class="sun"></div>
-                <div class="moon"></div>
-            </div>
-        </label>
-    </div>
-
     <script>
-        // Light/Dark Mode Toggle
-        const switchInput = document.getElementById('mode-switch');
-        switchInput.addEventListener('change', () => {
-            document.body.classList.toggle('light-mode');
-        });
-
-        // Menü Toggle für Mobile
-        const menuToggle = document.getElementById('menu-toggle');
-        const headerButtons = document.querySelector('.header-buttons');
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('open');
-            headerButtons.classList.toggle('open');
-        });
-
         // Funktion zum Anzeigen und Speichern des Namens
         function displayAndStoreName() {
             const nameField = document.getElementById('nameField');
             const displayedName = document.getElementById('displayedName');
+            const welcomeName = document.getElementById('welcomeName');
             const name = nameField.value;
-            displayedName.textContent = `Hallo, ${name}!`;
-            localStorage.setItem('username', name); // Speichern im lokalen Speicher
+
+            if (name) {
+                displayedName.textContent = `Hallo, ${name}!`;
+                welcomeName.textContent = name;
+                localStorage.setItem('username', name); // Speichern im lokalen Speicher
+            }
+        }
+
+        // Funktion zum Zurücksetzen des Namens
+        function resetName() {
+            localStorage.removeItem('username');
+            document.getElementById('displayedName').textContent = "";
+            document.getElementById('welcomeName').textContent = "";
         }
 
         // Beim Laden der Seite den Namen wieder anzeigen
@@ -353,6 +184,7 @@
             const savedName = localStorage.getItem('username');
             if (savedName) {
                 document.getElementById('displayedName').textContent = `Hallo, ${savedName}!`;
+                document.getElementById('welcomeName').textContent = savedName;
             }
         };
     </script>
