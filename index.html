@@ -275,7 +275,7 @@
 </head>
 <body>
     <header>
-        <img src="logo.png" alt="Logo">
+        <img src="logo.ico" alt="Logo">
         <div class="menu-toggle" id="hamburger">
             <span></span>
             <span></span>
@@ -289,7 +289,7 @@
     </header>
 
     <div class="container">
-        <h1>Willkommen, <span id="userName">Gast</span>!</h1>
+        <h1 id="greeting"></h1>
         <p>Schön, dass du wieder hier bist.</p>
     </div>
 
@@ -308,14 +308,17 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const storedName = localStorage.getItem('userName');
-            const userNameSpan = document.getElementById('userName');
+            const greetingElement = document.getElementById('greeting');
+
             if (storedName) {
-                userNameSpan.textContent = storedName;
+                greetingElement.textContent = `Herzlich Willkommen zurück, ${storedName}!`;
             } else {
-                const userName = prompt('Wie ist dein Name?');
+                const userName = prompt('Oh, Sie sind neu hier, sagen Sie uns doch Ihren Namen:');
                 if (userName) {
                     localStorage.setItem('userName', userName);
-                    userNameSpan.textContent = userName;
+                    greetingElement.textContent = `Herzlich Willkommen zurück, ${userName}!`;
+                } else {
+                    greetingElement.textContent = 'Willkommen, Gast!';
                 }
             }
 
