@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -268,112 +269,57 @@
             width: 4px;
             height: 4px;
             top: 10px;
-            left: 12px;
-        }
-
-        /* Überschriften */
-        h1, h2 {
-            color: #2196F3;
-        }
-
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-        }
-
-        .tooltip .tooltip-text {
-            visibility: hidden;
-            width: 140px;
-            background-color: black;
-            color: #fff;
-            text-align: center;
-            padding: 5px;
-            border-radius: 6px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%; /* Position oberhalb des Tooltip */
-            left: 50%;
-            margin-left: -70px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .tooltip:hover .tooltip-text {
-            visibility: visible;
-            opacity: 1;
+            left: 15px;
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="logo.png" alt="Logo" onclick="window.location.href='index.html';">
-        <div class="menu-toggle" id="menu-toggle">
+        <img src="logo.png" alt="Logo">
+        <div class="menu-toggle" id="hamburger">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        <nav class="header-buttons" id="header-buttons">
-            <a href="index.html" class="header-button">Startseite</a>
-            <a href="news.html" class="header-button">News</a>
-            <a href="kontakt.html" class="header-button">Kontakt</a>
-        </nav>
+        <div class="header-buttons">
+            <a href="#" class="header-button">Home</a>
+            <a href="#" class="header-button">Über uns</a>
+            <a href="#" class="header-button">Kontakt</a>
+        </div>
     </header>
+
     <div class="container">
-        <h1>Willkommen auf der Schulhomepage</h1>
-        <p>Schulzentrum Oberes Elztal</p>
+        <h1>Willkommen im Schulzentrum Oberes Elztal</h1>
+        <p>Die beste Schule für Ihre Kinder.</p>
     </div>
+
     <div class="switch-box">
-        <div class="tooltip">
-            <label class="switch">
-                <input type="checkbox" id="mode-toggle">
-                <div class="slider">
-                    <div class="sun">
-                        <div class="sun-ring"></div>
-                    </div>
-                    <div class="moon"></div>
+        <label class="switch">
+            <input type="checkbox" id="mode-toggle">
+            <div class="slider">
+                <div class="sun">
+                    <div class="sun-ring"></div>
                 </div>
-            </label>
-            <span class="tooltip-text">Wechseln Sie zwischen Hell- und Dunkelmodus!</span>
-        </div>
+                <div class="moon"></div>
+            </div>
+        </label>
+        <p>Umschalten zwischen Dark Mode und Light Mode</p>
     </div>
 
- <script>
-        const modeSwitch = document.getElementById('modeSwitch');
-    
-        // Überprüfen, ob der Light Mode im localStorage gespeichert ist
-        if (localStorage.getItem('lightMode') === 'enabled') {
-            document.body.classList.add('light-mode');
-            modeSwitch.checked = true; // Schalter aktivieren
-        }
-    
-        modeSwitch.addEventListener('change', () => {
-            if (modeSwitch.checked) {
-                document.body.classList.add('light-mode');
-                localStorage.setItem('lightMode', 'enabled');
-            } else {
-                document.body.classList.remove('light-mode');
-                localStorage.setItem('lightMode', 'disabled');
-            }
-        });
-
-
-    
-        // Dark/Light Mode Toggle
+    <script>
+        // Light/Dark Mode Umschaltung
         const modeToggle = document.getElementById('mode-toggle');
-        const body = document.body;
-
         modeToggle.addEventListener('change', () => {
-            body.classList.toggle('light-mode');
+            document.body.classList.toggle('light-mode');
         });
 
-        // Hamburger-Menü Toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const headerButtons = document.getElementById('header-buttons');
+        // Hamburger-Menü Steuerung
+        const hamburger = document.getElementById('hamburger');
+        const menu = document.querySelector('.header-buttons');
 
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('open');
-            headerButtons.classList.toggle('open');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            menu.classList.toggle('open');
         });
     </script>
 </body>
