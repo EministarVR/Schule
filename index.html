@@ -306,21 +306,36 @@
         <p>Umschalten zwischen Dark Mode und Light Mode</p>
     </div>
 
-    <script>
-        // Light/Dark Mode Umschaltung
-        const modeToggle = document.getElementById('mode-toggle');
-        modeToggle.addEventListener('change', () => {
-            document.body.classList.toggle('light-mode');
-        });
+  <script>
+    // Beim Laden der Seite den gespeicherten Modus aus dem localStorage abrufen
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedMode = localStorage.getItem('themeMode');
+        if (savedMode === 'light') {
+            document.body.classList.add('light-mode');
+            modeToggle.checked = true; // Setzt den Toggle-Switch auf die richtige Position
+        }
+    });
 
-        // Hamburger-Menü Steuerung
-        const hamburger = document.getElementById('hamburger');
-        const menu = document.querySelector('.header-buttons');
+    // Light/Dark Mode Umschaltung
+    const modeToggle = document.getElementById('mode-toggle');
+    modeToggle.addEventListener('change', () => {
+        if (modeToggle.checked) {
+            document.body.classList.add('light-mode');
+            localStorage.setItem('themeMode', 'light'); // Speichert den Light Mode in localStorage
+        } else {
+            document.body.classList.remove('light-mode');
+            localStorage.setItem('themeMode', 'dark'); // Speichert den Dark Mode in localStorage
+        }
+    });
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('open');
-            menu.classList.toggle('open');
-        });
-    </script>
+    // Hamburger-Menü Steuerung
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.querySelector('.header-buttons');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        menu.classList.toggle('open');
+    });
+</script>
 </body>
 </html>
